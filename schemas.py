@@ -14,6 +14,9 @@ class PostOut(BaseModel):
     content: str
 
     class Config:
+        def __init__(self):
+            pass
+
         orm_mode = True
 
 
@@ -29,4 +32,7 @@ class CommentOut(BaseModel):
     post_id: int
 
     class Config:
+        def __init__(self):
+            pass
+
         orm_mode = True
