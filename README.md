@@ -10,18 +10,23 @@
    cd entry_task_amber
    ```
 3. conda env
-    - Create a new environment
+    - create a new environment
         ```
         conda create --name my-blog python=3.9
         ```
-    - Activate environment
+    - activate environment
         ```
         conda activate my-blog
         ```
-    - Install dependencies
+    - install dependencies
         ```
         pip install -r requirements.txt
         ```
+    - set up environment
+      ```
+      cp .env.example .env
+      cp docker-compose.yaml.example docker-compose.yaml
+      ```
 4. set up database
    - install Docker
    - build all needed containers
