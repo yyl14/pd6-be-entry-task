@@ -1,13 +1,18 @@
-from fastapi import FastAPI, Depends
+from fastapi import FastAPI, Depends, HTTPException
 import models
 import schemas
+from config import app_config
 from database import SessionLocal, engine
 from sqlalchemy.orm import Session
 from typing import Optional
 
 models.Base.metadata.create_all(bind=engine)
 
-app = FastAPI()
+app = FastAPI(
+    title=app_config.title,
+    docs_url=app_config.docs_url,
+    redoc_url=app_config.redoc_url,
+)
 
 
 def get_db():

@@ -1,5 +1,5 @@
-# Entry Task
-### Set up
+# Entry Task --blog backend
+## Set up
 
 1. git clone
    ```
@@ -28,7 +28,7 @@
      ```
      docker-compose up
      ```
-   - install DBeaver
+   - install DBeaver and connect to database
 5. fastapi framework
     - Run app
         ```
@@ -38,3 +38,89 @@
         ```
         http://127.0.0.1:8000/docs
         ```
+## Database schema
+
+| post    | type    |
+|---------|---------|
+| id      | integer |
+| author  | string  |
+| title   | string  |
+| content | text    |
+
+| comment | type      |
+|---------|-----------|
+| id      | integer   |
+| post_id | integer   |
+| author  | string    |
+| content | text      |
+
+## Input and Output Class
+
+### Input Class
+#### PostIn 
+    author: str
+    title: str
+    content: str
+#### CommentIn
+    author: str
+    content: str
+
+### Output Class
+#### PostOut
+    id: int
+    author: str
+    title: str
+    content: str
+#### CommentOut
+    id: int
+    author: str
+    content: str
+    post_id: int
+
+
+### APIs
+
+#### browse post `GET /post`
+```
+input: None
+output: list[PostOut]
+```
+
+#### delete post `DELETE /post`
+```
+input: post_id
+output: Post id {post_id} is deleted.
+```
+
+#### add post `POST /post`
+```
+input: [PostIn]
+output: [PostOut]
+```
+
+#### read post `GET /post/{post_id}`
+```
+input: post_id
+output: [PostOut]
+```
+
+#### edit post `PATCH /post/{post_id}`
+```
+input:
+   post_id
+   title (Optional)
+   content (Optional)
+output: [PostOut]
+```
+
+#### browse comment `GET /post/{post_id}/comment`
+```
+input: post_id
+output: list[CommentOut]
+```
+
+#### add comment `POST /post/{post_id}/comment`
+```
+input: [CommentIn]
+output: [CommentOut]
+```
