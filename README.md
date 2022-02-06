@@ -33,7 +33,7 @@
      ```
      docker-compose up
      ```
-   - install DBeaver and connect to database
+   - install DBeaver and connect to database (Optional)
 5. fastapi framework
     - Run app
         ```
